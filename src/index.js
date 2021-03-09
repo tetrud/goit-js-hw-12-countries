@@ -12,7 +12,9 @@ const { searchInput } = refs;
 function onSearchCountry(event) {
   const searchQuery = event.target.value;
 
-  fetchCountries(searchQuery).then(propertyQuery);
+  fetchCountries(searchQuery)
+    .then(propertyQuery)
+    .catch(error => console.log(error));
 }
 
 searchInput.addEventListener('input', debounce(onSearchCountry, 500));
