@@ -9,20 +9,14 @@ const { list } = refs;
 //======================================
 
 function propertyQuery(countries) {
-  if (!countries) return;
-
-  if (countries.length > 2 && countries.length <= 10) {
-    createListCountries(countries);
-  }
-
-  if (countries.length === 1) {
-    createCardCountries(countries);
-  }
   if (countries.length > 10) {
     messageError('Too many matches found. Please enter a more specific query!');
-  }
-  if (countries.status === 404) {
+  } else if (countries.status === 404) {
     messageError('Incorrect input');
+  } else if (countries.length > 2 && countries.length <= 10) {
+    createListCountries(countries);
+  } else {
+    createCardCountries(countries);
   }
 }
 
